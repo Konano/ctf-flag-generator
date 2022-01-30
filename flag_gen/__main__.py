@@ -1,3 +1,4 @@
+import re
 import math
 import secrets
 import argparse
@@ -42,14 +43,25 @@ def leet_change(c):
         return c, 0
 
 
-def leet(s):
-    entropy = 0
-    new_string = []
+def leet(s, entropy=False, flag_format=False):
+    entropy_score = 0
+    pre_s = suf_s = ''
+    if flag_format:
+        if s.count('{') == 1 and s.count('}') == 1 and s.find('{') < s.find('}'):
+            pre_s = s[:s.find('{')+1]
+            suf_s = s[s.find('}'):]
+            s = s[s.find('{')+1:s.find('}')]
+
+    new_string = [pre_s]
     for c in s.replace(' ', '_'):
         new_char, e = leet_change(c)
         new_string.append(new_char)
-        entropy += e
-    return ''.join(new_string), entropy
+        entropy_score += e
+    new_string.append(suf_s)
+    if entropy:
+        return ''.join(new_string), entropy_score
+    else:
+        return ''.join(new_string)
 
 
 def main():
@@ -57,7 +69,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("string", help="origin flag string")
     args = parser.parse_args()
-    new_string, entropy = leet(args.string)
+    new_string, entropy = leet(args.string, True, True)
     print(new_string)
     print(f"Entropy: {entropy:.2f} bits")
 
