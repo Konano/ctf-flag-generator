@@ -2,17 +2,23 @@
 
 A CTF leet flag generator
 
+## Install
+
+```
+pip install flag-gen
+```
+
 ## Usage
 
 To translate alpha characters to leet string:
 
 ```
-./genflag.py 'this_is_your_flag'
+flag-gen 'this is your flag' 
 ````
 
 And output maybe:
 
 ```
 TH1S_i5_yOUr_fL@6
-Added entropy: 8.75 bits
+Entropy: 20.92 bits
 ```
