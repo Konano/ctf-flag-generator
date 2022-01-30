@@ -22,3 +22,12 @@ And output maybe:
 TH1S_i5_yOUr_fL@6
 Entropy: 20.92 bits
 ```
+
+You can use it in your code:
+
+```python
+import flag_gen
+
+print(flag_gen.leet('this is your flag'))
+# ('7H1s_1$_youR_fL46', 20.92481250360578)
+```
