@@ -1,13 +1,14 @@
-from distutils.core import setup
+import setuptools
 from pathlib import Path
+
 import flag_gen
 
 LONG_DESC = Path('README.md').read_text('utf8')
 VERSION = flag_gen.__version__
 
-setup(
+setuptools.setup(
     name='flag_gen',
-    packages=['flag-gen'],
+    packages=setuptools.find_packages(),
     version=VERSION,
     license='MIT',
     description='A CTF leet flag generator',
